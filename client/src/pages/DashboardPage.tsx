@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDecisionStore } from '../stores/decisionStore';
-import { useAuthStore } from '../stores/authStore';
 import { useSound } from '../context/SoundContext';
+import HeroCard from '../components/HeroCard';
+import EmptyState from '../components/EmptyState';
 import AccuracyDashboard from '../components/timeline/AccuracyDashboard';
 import styles from './DashboardPage.module.css';
-
-const CATEGORIES = ['Career', 'Finance', 'Relationships', 'Health', 'Education', 'Lifestyle', 'Other'];
 
 const THINKING_MESSAGES = [
     '🔮 Analyzing your decision...',
@@ -38,7 +37,7 @@ function ThinkingIndicator() {
     }, []);
 
     return (
-        <div className={styles.thinkingIndicator}>
+        <div className={styles.thinkingIndicator} style={{ marginBottom: '2rem' }}>
             <div className={styles.thinkingHeader}>
                 <div className={styles.thinkingDots}>
                     <span></span>
@@ -53,128 +52,90 @@ function ThinkingIndicator() {
 }
 
 export default function DashboardPage() {
-    const [decision, setDecision] = useState('');
-    const [category, setCategory] = useState('');
-    const [hideTips, setHideTips] = useState(false);
-    const { isGenerating, error, createDecision, setCurrentDecision } = useDecisionStore();
-    const { user } = useAuthStore();
+    const { decisions, isGenerating, error, createDecision, fetchDecisions, setCurrentDecision } = useDecisionStore();
     const { playSound } = useSound();
     const navigate = useNavigate();
+    const [startSampleTrigger, setStartSampleTrigger] = useState(false);
 
-    // Clear any existing decision when entering dashboard (fresh start)
+    // Fresh start: clear current selection on load and load decisions
     useEffect(() => {
         setCurrentDecision(null);
-    }, [setCurrentDecision]);
+        fetchDecisions();
+    }, [setCurrentDecision, fetchDecisions]);
 
-    const handleSubmit = async (e?: React.FormEvent) => {
-        e?.preventDefault();
-        if (!decision.trim() || isGenerating) return;
-
-        // Play send sound
+    const handleHeroSubmit = async (decisionText: string, categoryText: string) => {
         playSound('send');
-
-        // Hide tips with animation when submitting
-        setHideTips(true);
-
         try {
-            const result = await createDecision(decision.trim(), category || undefined);
+            const result = await createDecision(decisionText, categoryText || undefined);
             navigate(`/decision/${result.decision.id}`);
         } catch {
-            // Error handled by store
-            setHideTips(false); // Show tips again on error
-        }
-    };
-
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-        // Submit on Enter (without Shift key for newlines)
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            handleSubmit();
+            // Handled by store
         }
     };
 
     return (
         <div className={styles.container}>
-            {/* Welcome Section by prateek*/}
-            <section className={styles.welcome}>
-                <h1>Welcome{user?.name ? `, ${user.name}` : ''} <span className={styles.emoji}>👋</span></h1>
-                <p>What decision are you contemplating today?</p>
-            </section>
+            {/* Contemplation Hero Header with Typing Simulation */}
+            <HeroCard
+                isGenerating={isGenerating}
+                error={error}
+                onSubmit={handleHeroSubmit}
+                triggerSample={startSampleTrigger}
+                onSampleTriggered={() => setStartSampleTrigger(false)}
+            />
 
-            {/* Accuracy Dashboard */}
+            {/* Thinking Indicator */}
+            {isGenerating && <ThinkingIndicator />}
+
+            {/* Accuracy Dashboard Widget */}
             <AccuracyDashboard />
 
-            {/* Decision Input */}
-            <section className={styles.inputSection}>
-                <form onSubmit={handleSubmit} className={styles.form}>
-                    <div className={styles.inputWrapper}>
-                        <textarea
-                            className={`input textarea ${styles.decisionInput}`}
-                            placeholder="Describe your decision... e.g., 'Should I quit my job to start a startup?' or 'Should I move to a new city for a relationship?'"
-                            value={decision}
-                            onChange={(e) => setDecision(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                            disabled={isGenerating}
-                            rows={4}
-                        />
-                        <div className={styles.inputFooter}>
-                            <select
-                                className={`input ${styles.categorySelect}`}
-                                value={category}
-                                onChange={(e) => { playSound('click'); setCategory(e.target.value); }}
-                                disabled={isGenerating}
-                            >
-                                <option value="">Set category (optional)</option>
-                                {CATEGORIES.map(cat => (
-                                    <option key={cat} value={cat.toLowerCase()}>{cat}</option>
-                                ))}
-                            </select>
-                            <button
-                                type="submit"
-                                className="btn btn-primary"
-                                disabled={!decision.trim() || isGenerating}
-                            >
-                                {isGenerating ? (
-                                    <>
-                                        <span className={styles.spinner}></span>
-                                        Generating...
-                                    </>
-                                ) : (
-                                    <>✨ Explore Futures</>
-                                )}
-                            </button>
+            {/* Empty State Onboarding Screen */}
+            {decisions.length === 0 && !isGenerating && (
+                <EmptyState
+                    onExploreSample={() => setStartSampleTrigger(true)}
+                    isGenerating={isGenerating}
+                />
+            )}
+
+            {/* Quick Tips List */}
+            {decisions.length > 0 && !isGenerating && (
+                <section className={styles.tipsSection}>
+                    <h2 style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '1rem', color: '#fff' }}>
+                        💡 Tips for Better Results
+                    </h2>
+                    <div className={styles.tipsList}>
+                        <div className={styles.tip}>
+                            <span className={styles.tipIcon}>🎯</span>
+                            <div>
+                                <h4 style={{ fontSize: '0.9rem', fontWeight: '600', color: '#fff', marginBottom: '2px' }}>Be Specific</h4>
+                                <p>Describe your choices in natural language, details matter.</p>
+                            </div>
+                        </div>
+                        <div className={styles.tip}>
+                            <span className={styles.tipIcon}>⏱️</span>
+                            <div>
+                                <h4 style={{ fontSize: '0.9rem', fontWeight: '600', color: '#fff', marginBottom: '2px' }}>Timeframes</h4>
+                                <p>Mention specific timelines (e.g. next 6 months, 2 years).</p>
+                            </div>
+                        </div>
+                        <div className={styles.tip}>
+                            <span className={styles.tipIcon}>💰</span>
+                            <div>
+                                <h4 style={{ fontSize: '0.9rem', fontWeight: '600', color: '#fff', marginBottom: '2px' }}>Constraints</h4>
+                                <p>Include financial, geographic, or emotional factors.</p>
+                            </div>
+                        </div>
+                        <div className={styles.tip}>
+                            <span className={styles.tipIcon}>❤️</span>
+                            <div>
+                                <h4 style={{ fontSize: '0.9rem', fontWeight: '600', color: '#fff', marginBottom: '2px' }}>Relationships</h4>
+                                <p>Specify if it affects family, partners, or friendships.</p>
+                            </div>
                         </div>
                     </div>
-
-                    {/* Thinking Indicator by prateek*/}
-                    {isGenerating && <ThinkingIndicator />}
-
-                    {error && <div className={styles.error}>{error}</div>}
-                </form>
-            </section>
-
-            {/* Quick Tips - Slide down and hide when generating */}
-            <section className={`${styles.tipsSection} ${hideTips ? styles.tipsSectionHidden : ''}`}>
-                <h2>💡 Tips for Better Results</h2>
-                <div className={styles.tipsList}>
-                    <div className={styles.tip}>
-                        <span className={styles.tipIcon}>🎯</span>
-                        <p>Be specific about your situation and context</p>
-                    </div>
-                    <div className={styles.tip}>
-                        <span className={styles.tipIcon}>⏱️</span>
-                        <p>Include relevant timeframes or deadlines</p>
-                    </div>
-                    <div className={styles.tip}>
-                        <span className={styles.tipIcon}>💰</span>
-                        <p>Mention financial or resource constraints</p>
-                    </div>
-                    <div className={styles.tip}>
-                        <span className={styles.tipIcon}>❤️</span>
-                        <p>Consider how it affects relationships</p>
-                    </div>
-                </div>
-            </section>
+                </section>
+            )}
         </div>
     );
 }

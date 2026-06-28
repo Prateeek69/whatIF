@@ -41,6 +41,7 @@ export default function TimelineCard({ timeline, index, isSelected, onSelect }: 
     };
 
     const handleSaveLog = async (event: TimelineEvent) => {
+        // Play whoosh sound on timeline rewrite start
         playSound('send');
         try {
             // 1. Log the outcome
@@ -54,6 +55,7 @@ export default function TimelineCard({ timeline, index, isSelected, onSelect }: 
                     await correctTimeline(timeline.id, event.id, actualOutcome.trim());
                     // Reload decision from database to reflect corrected events
                     await fetchDecision(timeline.decisionId);
+                    // Play gentle chime sound on success
                     playSound('received');
                 } catch (err) {
                     console.error('Failed to correct timeline:', err);
@@ -97,7 +99,7 @@ export default function TimelineCard({ timeline, index, isSelected, onSelect }: 
             className={`${styles.card} ${isSelected ? styles.selected : ''}`}
             style={{
                 '--accent-color': color,
-                animationDelay: `${index * 0.5}s`
+                animationDelay: `${index * 0.1}s`
             } as React.CSSProperties}
             onClick={onSelect}
         >

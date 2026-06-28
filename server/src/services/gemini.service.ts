@@ -463,4 +463,3 @@ Return ONLY valid JSON matching this exact schema:
         throw new AppError('Failed to regenerate events based on reality', 502);
     }
 }
-
