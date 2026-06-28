@@ -55,6 +55,7 @@ export default function DashboardPage() {
     const { decisions, isGenerating, error, createDecision, fetchDecisions, setCurrentDecision } = useDecisionStore();
     const { playSound } = useSound();
     const navigate = useNavigate();
+    const [startSampleTrigger, setStartSampleTrigger] = useState(false);
 
     // Fresh start: clear current selection on load and load decisions
     useEffect(() => {
@@ -72,26 +73,15 @@ export default function DashboardPage() {
         }
     };
 
-    const handleExploreSample = async () => {
-        playSound('send');
-        try {
-            const result = await createDecision(
-                "Should I quit my corporate job to open an artisanal coffee shop?",
-                "finance"
-            );
-            navigate(`/decision/${result.decision.id}`);
-        } catch {
-            // Handled by store
-        }
-    };
-
     return (
         <div className={styles.container}>
-            {/* Contemplation Hero Header */}
+            {/* Contemplation Hero Header with Typing Simulation */}
             <HeroCard
                 isGenerating={isGenerating}
                 error={error}
                 onSubmit={handleHeroSubmit}
+                triggerSample={startSampleTrigger}
+                onSampleTriggered={() => setStartSampleTrigger(false)}
             />
 
             {/* Thinking Indicator */}
@@ -100,10 +90,10 @@ export default function DashboardPage() {
             {/* Accuracy Dashboard Widget */}
             <AccuracyDashboard />
 
-            {/* Empty State for Onboarding */}
+            {/* Empty State Onboarding Screen */}
             {decisions.length === 0 && !isGenerating && (
                 <EmptyState
-                    onExploreSample={handleExploreSample}
+                    onExploreSample={() => setStartSampleTrigger(true)}
                     isGenerating={isGenerating}
                 />
             )}

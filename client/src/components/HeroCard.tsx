@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSound } from '../context/SoundContext';
 import styles from './HeroCard.module.css';
 
@@ -6,32 +6,76 @@ interface HeroCardProps {
     isGenerating: boolean;
     error: string | null;
     onSubmit: (decision: string, category: string) => Promise<void>;
+    triggerSample?: boolean;
+    onSampleTriggered?: () => void;
 }
 
 const CATEGORIES = ['Career', 'Finance', 'Relationships', 'Health', 'Education', 'Lifestyle', 'Other'];
 
-export default function HeroCard({ isGenerating, error, onSubmit }: HeroCardProps) {
+export default function HeroCard({ isGenerating, error, onSubmit, triggerSample, onSampleTriggered }: HeroCardProps) {
     const [decision, setDecision] = useState('');
     const [category, setCategory] = useState('');
+    const [isTyping, setIsTyping] = useState(false);
     const { playSound } = useSound();
+
+    const triggerSampleScenario = () => {
+        if (isGenerating || isTyping) return;
+        
+        setIsTyping(true);
+        setDecision('');
+        setCategory('finance');
+        
+        const sampleText = "Should I quit my corporate job to open an artisanal coffee shop?";
+        let currentText = "";
+        let index = 0;
+        
+        playSound('click');
+        
+        const timer = setInterval(() => {
+            if (index < sampleText.length) {
+                currentText += sampleText[index];
+                setDecision(currentText);
+                index++;
+                if (index % 3 === 0) {
+                    playSound('click');
+                }
+            } else {
+                clearInterval(timer);
+                setIsTyping(false);
+                playSound('send');
+                setTimeout(() => {
+                    onSubmit(sampleText, 'finance');
+                }, 600);
+            }
+        }, 35);
+    };
+
+    useEffect(() => {
+        if (triggerSample) {
+            triggerSampleScenario();
+            if (onSampleTriggered) {
+                onSampleTriggered();
+            }
+        }
+    }, [triggerSample]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!decision.trim() || isGenerating) return;
+        if (!decision.trim() || isGenerating || isTyping) return;
         await onSubmit(decision.trim(), category);
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            if (decision.trim() && !isGenerating) {
+            if (decision.trim() && !isGenerating && !isTyping) {
                 onSubmit(decision.trim(), category);
             }
         }
     };
 
     return (
-        <section className={styles.heroCard} aria-label="Explore Future possibilities">
+        <section className={styles.heroCard} aria-label="Contemplate Decision">
             {/* Centered Typography Hierarchy */}
             <div className={styles.welcome}>
                 <h1 className={styles.title}>What future are we exploring?</h1>
@@ -46,22 +90,43 @@ export default function HeroCard({ isGenerating, error, onSubmit }: HeroCardProp
                     value={decision}
                     onChange={(e) => setDecision(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    disabled={isGenerating}
+                    disabled={isGenerating || isTyping}
                     rows={4}
                 />
 
                 <div className={styles.footer}>
-                    <select
-                        className={styles.select}
-                        value={category}
-                        onChange={(e) => { playSound('click'); setCategory(e.target.value); }}
-                        disabled={isGenerating}
-                    >
-                        <option value="">Set category (optional)</option>
-                        {CATEGORIES.map(cat => (
-                            <option key={cat} value={cat.toLowerCase()}>{cat}</option>
-                        ))}
-                    </select>
+                    <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                        <select
+                            className={styles.select}
+                            value={category}
+                            onChange={(e) => { playSound('click'); setCategory(e.target.value); }}
+                            disabled={isGenerating || isTyping}
+                        >
+                            <option value="">Set category (optional)</option>
+                            {CATEGORIES.map(cat => (
+                                <option key={cat} value={cat.toLowerCase()}>{cat}</option>
+                            ))}
+                        </select>
+
+                        <button
+                            type="button"
+                            className={styles.select}
+                            onClick={triggerSampleScenario}
+                            disabled={isGenerating || isTyping}
+                            style={{
+                                background: 'rgba(139, 92, 246, 0.05)',
+                                borderColor: 'rgba(139, 92, 246, 0.2)',
+                                color: '#C084FC',
+                                fontWeight: '600',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '6px',
+                                justifyContent: 'center'
+                            }}
+                        >
+                            🪄 Try Sample
+                        </button>
+                    </div>
 
                     <button
                         type="submit"
@@ -74,9 +139,9 @@ export default function HeroCard({ isGenerating, error, onSubmit }: HeroCardProp
                             fontWeight: '600',
                             border: '1px solid rgba(255,255,255,0.1)'
                         }}
-                        disabled={!decision.trim() || isGenerating}
+                        disabled={!decision.trim() || isGenerating || isTyping}
                     >
-                        {isGenerating ? (
+                        {isGenerating || isTyping ? (
                             <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                 <span className="spinner" style={{ width: '16px', height: '16px' }}></span>
                                 Simulating...
