@@ -1,0 +1,30 @@
+# Optional: run a local Postgres for development without touching Supabase.
+#
+#   docker compose up -d
+#   # then set server/.env:
+#   DATABASE_URL="postgresql://whatif:whatif@localhost:5432/whatif"
+#   DIRECT_URL="postgresql://whatif:whatif@localhost:5432/whatif"
+#
+# Stop with `docker compose down`. Data persists in the named volume.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: whatif-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: whatif
+      POSTGRES_PASSWORD: whatif
+      POSTGRES_DB: whatif
+    ports:
+      - "5432:5432"
+    volumes:
+      - whatif-pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "whatif"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  whatif-pg-data:

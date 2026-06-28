@@ -1,0 +1,32 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# Connect this repo at https://dashboard.render.com/blueprints, then fill in
+# the env vars marked `sync: false` in the dashboard (Render won't read them
+# from this file for security).
+
+services:
+  - type: web
+    name: whatif-api
+    runtime: node
+    plan: free
+    region: oregon          # change if your Supabase project is in EU/Asia
+    rootDir: server
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start:prod
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_EXPIRES_IN
+        value: 15m
+      # Secrets (set these manually in the Render dashboard):
+      - key: JWT_SECRET
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: DIRECT_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
