@@ -10,8 +10,9 @@
 }
 
 .welcome h1 {
-    font-size: 1.75rem;
-    font-weight: 600;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 700;
     margin-bottom: var(--space-2);
     background: var(--color-accent-gradient);
     -webkit-background-clip: text;
@@ -25,8 +26,10 @@
 }
 
 .welcome p {
-    font-size: 1rem;
+    font-size: 1.02rem;
     color: var(--color-text-secondary);
+    max-width: 540px;
+    margin: 0 auto;
 }
 
 /* Input Section by prateek*/
@@ -42,12 +45,13 @@
 }
 
 .inputWrapper {
-    background: var(--color-bg-card);
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)), var(--color-bg-card);
     border-radius: var(--radius-xl);
     padding: var(--space-6);
     backdrop-filter: blur(12px);
     transition: all 0.2s ease;
     box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
 }
 
 .inputWrapper:focus-within {
@@ -56,14 +60,53 @@
         0 0 0 2px var(--color-accent-primary);
 }
 
+.briefHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.briefEyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent-secondary);
+    margin-bottom: var(--space-1);
+}
+
+.briefHeader h2 {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+}
+
+.advancedToggle {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-glass);
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-full);
+    padding: 0.7rem 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.advancedToggle:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-accent-primary);
+}
+
 .decisionInput {
     background: transparent;
     border: none;
-    font-size: 1rem;
+    font-size: 1.08rem;
+    font-weight: 600;
     resize: none;
-    min-height: 100px;
+    min-height: 120px;
     color: var(--color-text-primary);
-    line-height: 1.6;
+    line-height: 1.7;
     width: 100%;
 }
 
@@ -74,6 +117,54 @@
 
 .decisionInput::placeholder {
     color: var(--color-text-muted);
+}
+
+.contextSummary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+}
+
+.contextPill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.8rem;
+    border-radius: var(--radius-full);
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    color: var(--color-text-secondary);
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+.advancedGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border);
+}
+
+.contextField {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.contextField span {
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.contextFieldWide {
+    grid-column: 1 / -1;
+}
+
+.contextSelect {
+    cursor: pointer;
 }
 
 .inputFooter {
@@ -185,13 +276,14 @@
     align-items: flex-start;
     gap: var(--space-3);
     padding: var(--space-4);
-    background: var(--color-bg-secondary);
+    background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
     border-radius: var(--radius-lg);
+    border: 1px solid rgba(148, 163, 184, 0.12);
     transition: all 0.2s ease;
 }
 
 .tip:hover {
-    background: var(--color-bg-tertiary);
+    background: rgba(255,255,255,0.06);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -202,7 +294,7 @@
 }
 
 .tip p {
-    font-size: 0.8125rem;
+    font-size: 0.88rem;
     color: var(--color-text-secondary);
     line-height: 1.5;
 }
@@ -211,9 +303,10 @@
 .thinkingIndicator {
     margin-top: var(--space-5);
     padding: var(--space-5) var(--space-6);
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+    background: linear-gradient(135deg, rgba(79, 140, 255, 0.1) 0%, rgba(45, 212, 191, 0.08) 100%);
     border-radius: var(--radius-xl);
     animation: fadeIn 0.3s ease;
+    border: 1px solid rgba(79, 140, 255, 0.12);
 }
 
 .thinkingHeader {
@@ -291,6 +384,18 @@
 
 /* Responsive */
 @media (max-width: 640px) {
+    .briefHeader {
+        flex-direction: column;
+    }
+
+    .advancedGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .contextFieldWide {
+        grid-column: auto;
+    }
+
     .tipsList {
         grid-template-columns: 1fr;
     }
