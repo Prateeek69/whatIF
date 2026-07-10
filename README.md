@@ -4,7 +4,7 @@
 
 # 🔮 WhatIF - AI-Driven Cognitive Time Simulator
 
-> **Experience the future before you choose it** [Live Link](https://client-five-xi-44.vercel.app/)
+> **Experience the future before you choose it**
 
 WhatIF is an AI-powered decision-making tool that simulates multiple future timelines based on your life decisions. Using Google's Gemini AI, it generates personalized scenarios showing potential outcomes across emotional, financial, career, and relationship dimensions.
 
