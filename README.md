@@ -1,58 +1,93 @@
 <p align="center">
-  <img src="client/public/icon.png" alt="WhatIF Logo" width="200" />
+  <img src="client/public/icon.png" alt="WhatIF Logo" width="160" />
 </p>
 
-# 🔮 WhatIF - AI-Driven Cognitive Time Simulator
+<h1 align="center">🔮 WhatIF — AI-Driven Cognitive Time Simulator</h1>
 
-> **Experience the future before you choose it**
+<p align="center">
+  <strong>Experience the future before you choose it.</strong>
+</p>
 
-WhatIF is an AI-powered decision-making tool that simulates multiple future timelines based on your life decisions. Using Google's Gemini AI, it generates personalized scenarios showing potential outcomes across emotional, financial, career, and relationship dimensions.
+<p align="center">
+  <a href="https://what-if-pc.vercel.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+  </a>
+  <a href="https://www.youtube.com/watch?v=LTtSO9-LDhg" target="_blank">
+    <img src="https://img.shields.io/badge/Demo_Video-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Demo Video" />
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Frontend-React%20%7C%20Vite%20%7C%20TS-61DAFB?style=flat-square&logo=react" alt="Frontend" />
+  <img src="https://img.shields.io/badge/Backend-Node.js%20%7C%20Express-339933?style=flat-square&logo=node.js" alt="Backend" />
+  <img src="https://img.shields.io/badge/Database-Prisma%20%7C%20Supabase%20%7C%20SQLite-3900?style=flat-square&logo=prisma" alt="Database" />
+  <img src="https://img.shields.io/badge/AI-Google%20Gemini-4285F4?style=flat-square&logo=google-gemini" alt="AI" />
+</p>
+
+---
+
+### 🌟 Overview
+
+**WhatIF** is an AI-powered cognitive decision-making simulator that generates and visualizes multiple parallel future timelines based on critical choices you make today. Leveraging **Google Gemini AI**, it projects personalized, multi-dimensional outcomes across emotional, financial, career, and relationship spectrums.
+
+It's designed to reduce decision anxiety and democratize scenario planning, showing you the long-term impacts of your choices before you take the leap.
+
+---
 
 ## ✨ Features
 
-- **🧠 Multi-Timeline Generation** - Get 3-5 distinct future scenarios for any decision using Gemini 3 Flash
-- **👤 Personalized Simulations** - AI considers your risk tolerance, priorities, and unique life situation
-- **📊 Detailed Metrics** - Visualize emotional, financial, career, and relationship impacts
-- **⚖️ Timeline Comparison** - Compare up to 3 timelines side-by-side to weigh trade-offs
-- **🔄 Follow-up Decisions** - Inject new decisions to see how they alter futures dynamically
-- **🔐 Secure Authentication** - Full sign-up/login flow with JWT security
-- **🎨 Premium Experience** - Glassmorphism UI, Dark/Light mode, and immersive sound effects
+- **🧠 Multi-Timeline Generation** — Get 3-5 distinct future scenarios (Optimistic, Pragmatic, Pessimistic) for any life decision powered by Gemini.
+- **👤 Personalized Simulations** — The simulator factors in your risk tolerance, age, location, priorities, and unique life situation.
+- **📊 Interactive Metrics** — Track and compare emotional, financial, career, and relationship scores over time.
+- **⚖️ Side-by-Side Comparison** — Compare up to 3 timelines concurrently to weigh trade-offs and potential outcomes.
+- **🔄 Dynamic Branching (Follow-up Decisions)** — Inject subsequent decisions into any generated timeline to see how paths evolve dynamically.
+- **🔐 Secure Session & Auth** — Full guest session persistence and user login/signup with secure JWT-based authentication.
+- **🎨 Immersive Glassmorphism UI** — A premium, responsive interface featuring ambient background animations, dark/light modes, and interactive sound effects.
 
-## 📸 Screenshots
+---
 
-<!-- my screenshots will goes here -->
+## 📸 App Showcase
+
 <table align="center">
   <tr>
-    <td align="center"><img src="https://github.com/user-attachments/assets/3cfddcec-4d88-4d06-929e-8d5b27688109" width="300" /><br /><sub>01</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/f0c6c8fa-7357-41e7-9905-c260feeaae4e" width="300" /><br /><sub>02</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/fb262fe0-e522-4e16-9b44-db37e0d98754" width="300" /><br /><sub>03</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/3cfddcec-4d88-4d06-929e-8d5b27688109" width="280" /><br /><sub>01. Dashboard</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/f0c6c8fa-7357-41e7-9905-c260feeaae4e" width="280" /><br /><sub>02. Add Decision</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/fb262fe0-e522-4e16-9b44-db37e0d98754" width="280" /><br /><sub>03. Simulating</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="https://github.com/user-attachments/assets/651b1856-6917-46e6-88d7-be717eddc891" width="300" /><br /><sub>04</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/b0bc022e-861c-4b0c-b1f9-92d5e206f3b7" width="300" /><br /><sub>05</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/2f239571-bd2d-4062-88f5-f9ed417b3d3d" width="300" /><br /><sub>06</sub></td>    
+    <td align="center"><img src="https://github.com/user-attachments/assets/651b1856-6917-46e6-88d7-be717eddc891" width="280" /><br /><sub>04. Timelines Overview</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/b0bc022e-861c-4b0c-b1f9-92d5e206f3b7" width="280" /><br /><sub>05. Side-by-Side Comparison</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/2f239571-bd2d-4062-88f5-f9ed417b3d3d" width="280" /><br /><sub>06. Timeline Details</sub></td>    
   </tr>
   <tr>
-    <td align="center"><img src="https://github.com/user-attachments/assets/0da9ebec-4457-49a9-9a2f-e658c15b550e" width="300" /><br /><sub>07</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/c09765a4-560d-4406-8900-21e07a4a9cd8" width="300" /><br /><sub>08</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/b3c1117e-5b74-4902-a3d6-619bf2df7df2" width="300" /><br /><sub>09</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/0da9ebec-4457-49a9-9a2f-e658c15b550e" width="280" /><br /><sub>07. Interactive Graph</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/c09765a4-560d-4406-8900-21e07a4a9cd8" width="280" /><br /><sub>08. Follow-up Branching</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/b3c1117e-5b74-4902-a3d6-619bf2df7df2" width="280" /><br /><sub>09. Profile Settings</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="https://github.com/user-attachments/assets/511b3fef-afd9-4638-9d39-0c147a524bc0" width="300" /><br /><sub>10</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/e8dce624-9fda-4ce0-94fe-26e339334d5d" width="300" /><br /><sub>11</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/dba319ff-04d3-4026-841c-45460f72416a" width="300" /><br /><sub>12</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/511b3fef-afd9-4638-9d39-0c147a524bc0" width="280" /><br /><sub>10. Auth Screen</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/e8dce624-9fda-4ce0-94fe-26e339334d5d" width="280" /><br /><sub>11. Sound & Settings</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/dba319ff-04d3-4026-841c-45460f72416a" width="280" /><br /><sub>12. History</sub></td>
   </tr>
 </table>
 
-## 🛠 Tech Stack
 
-**Frontend:** React, TypeScript, Vite, Zustand, React Query, Glassmorphism UI  
-**Backend:** Node.js, Express, Prisma (SQLite)  
-**AI:** Google Gemini 3 API (Gemini 2.5 for fallback)
+(will be adding it soon,i am just procrastinating , pls wait)
+---
 
-## 🏗️ Architecture
+## 🛠️ Tech Stack
 
-The system follows a modern client-server architecture powered by Generative AI:
+- **Frontend:** React (TS), Vite, Zustand (State Management), React Query (Data Fetching), Glassmorphism UI
+- **Backend:** Node.js, Express, Prisma (ORM)
+- **Database:** SQLite (local development), Supabase PostgreSQL (production)
+- **AI Core:** Google Gemini API (supporting latest Gemini models with fallback configurations)
+- **Hosting:** Vercel (Frontend), Render (Backend)
+
+---
+
+## 🏗️ System Architecture
+
+The client-server architecture utilizes a structured Prompt Engine to leverage Generative AI:
 
 ```mermaid
 graph TD
@@ -60,12 +95,12 @@ graph TD
     Client -->|API Requests| Server[Node/Express Server]
     
     subgraph Backend
-    Server -->|Auth & Data| DB[(SQLite Database)]
+    Server -->|Auth & Data| DB[(Database: SQLite / Postgres)]
     Server -->|Context Construction| PromptEngine[Prompt Engine]
     end
     
     subgraph AI Cloud
-    PromptEngine -->|Structured Prompt| Gemini[Google Gemini 3 Flash]
+    PromptEngine -->|Structured Prompt| Gemini[Google Gemini API]
     Gemini -->|JSON Timeline Data| PromptEngine
     end
     
@@ -73,119 +108,116 @@ graph TD
     Server -->|Real-time Updates| Client
 ```
 
-## 🧠 How We Used Gemini 3
+---
 
-WhatIF leverages the advanced reasoning capabilities of **Google Gemini 3** to simulate complex human life paths.
+## 🧠 Gemini Integration & Prompt Engineering
 
-### 1. Context-Aware Prompt Engineering
-We don't just ask "what happens next?". We build a rich context object for every request:
-- **User Profile**: Risk tolerance, core values, life priorities.
-- **Current State**: Age, career, location, relationship status.
-- **Decision Matrix**: The specific choice being weighed (e.g., "Quit job to start a startup").
+WhatIF leverages the semantic and structured capabilities of Google Gemini to model life pathways.
 
-### 2. Multi-Timeline Simulation
-Gemini is instructed to generate **3 distinct timeline archetypes** concurrently:
-- **The Optimistic Path**: High risk, high reward.
-- **The Pragmatic Path**: Balanced, steady growth.
-- **The Pessimistic/Safe Path**: Low risk, potential stagnation.
+### 1. Context-Aware Construction
+Instead of basic prompts, we assemble a rich context containing:
+* **User Profile**: Risk profile, priorities, age, location, and relationship status.
+* **Current State**: Cumulative results of previous timeline decisions.
+* **Decision Matrix**: The specific choice to simulate.
 
-### 3. Structured JSON Output
-We utilize Gemini's JSON mode to ensure determinstic, parsable data for our frontend. Every event in the timeline includes:
-- `year`: Time offset
-- `event`: Description of the event
-- `impact_score`: -10 to +10 quantification of impact
-- `category`: Financial, Emotional, Career, or Relationship
+### 2. Multi-Timeline Modeling
+Gemini generates **3 archetypal scenarios** simultaneously:
+* **The Optimistic Path:** High-risk, high-return choices.
+* **The Pragmatic Path:** Realistic, balanced, and sustainable choices.
+* **The Pessimistic Path:** Stagnant, low-risk, or worst-case choices.
+
+### 3. Structured JSON Schema
+Using Gemini's structured output mode, we ensure valid and consistent JSON payloads:
+```json
+{
+  "year": 1,
+  "event": "Description of event...",
+  "impact_score": 7,
+  "category": "Career"
+}
+```
+
+---
 
 ## 🌍 Potential Impact
 
-### Democratizing Strategic Foresight
-Corporate strategists use "Scenario Planning" to make billion-dollar decisions. WhatIF brings this military-grade cognitive tool to personal life choices.
+* **Democratizing Foresight:** Brings strategic planning tools down to personal life choices.
+* **Mitigating Anxiety:** Visualizing different outcomes helps reduce choice paralysis and helps users take bold, informed pivots.
+* **Educational & Personal Growth:** Great for career counseling, financial planning, and habit visualizers.
 
-### Reducing Decision Paralysis
-By making the abstract future *concrete* and *visible*, WhatIF reduces anxiety and helping users make faster, more confident life pivots.
-
-### Broad Applicability
-- **Career Counseling**: Helping students choose majors.
-- **Financial Planning**: Visualizing the lifestyle impact of savings choices.
-- **Life Coaching**: Showing clients the trajectory of their habits.
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-
 - Node.js 18+
 - npm or yarn
-- Gemini API key ([Get one here](https://aistudio.google.com/apikey))
+- Gemini API Key ([Get it on Google AI Studio](https://aistudio.google.com/apikey))
 
-### Installation
+### Quick Setup
 
-1. **Clone the repository**
-   ```bash
-    git clone https://github.com/prateekiitg/whatif.git
-    cd WhatIF
-   ```
+#### 1. Clone the repository
+```bash
+git clone https://github.com/prateekiitg/whatif.git
+cd whatif
+```
 
-2. **Setup the server**
-   ```bash
-   cd server
-   npm install
-   cp .env.example .env
-   # Edit .env and add your GEMINI_API_KEY
-   npx prisma migrate dev
-   ```
+#### 2. Configure & Start Server
+```bash
+cd server
+npm install
+cp .env.example .env
+# Edit .env and enter your GEMINI_API_KEY
+npx prisma migrate dev
+npm run dev
+```
 
-3. **Setup the client**
-   ```bash
-   cd ../client
-   npm install
-   ```
+#### 3. Configure & Start Client
+In a new terminal:
+```bash
+cd client
+npm install
+npm run dev
+```
 
-### Running the Application
+#### 4. Access the App
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-1. **Start the server** (from `/server`)
-   ```bash
-   npm run dev
-   ```
+---
 
-2. **Start the client** (from `/client`)
-   ```bash
-   npm run dev
-   ```
-
-3. Open http://localhost:5173 in your browser
-
-## 📁 Project Structure
+## 📦 Project Structure
 
 ```
 whatif/
-├── client/                 # React frontend
+├── client/                 # React frontend (Vite + TS)
 │   ├── src/
-│   │   ├── components/     # Reusable UI components
-│   │   ├── pages/          # Page components
-│   │   ├── stores/         # Zustand state stores
-│   │   ├── services/       # API client
-│   │   └── context/        # React contexts
-│   └── public/             # Static assets
+│   │   ├── components/     # UI elements
+│   │   ├── pages/          # Full page views
+│   │   ├── stores/         # Zustand global states
+│   │   └── services/       # API integration
+│   └── public/             # Static icons & sounds
 │
 ├── server/                 # Express backend
 │   ├── src/
-│   │   ├── routes/         # API routes
-│   │   ├── services/       # Business logic
-│   │   ├── middleware/     # Auth & error handling
-│   │   └── lib/            # Prisma client
-│   └── prisma/             # Database schema
+│   │   ├── routes/         # Express endpoints
+│   │   ├── services/       # AI logic / Prompt engines
+│   │   └── middleware/     # JWT Auth & error filters
+│   └── prisma/             # SQLite/PostgreSQL schemas
 │
-└── README.md
+└── DEPLOY.md               # Production deployment guide
 ```
 
-## 🔑 Environment Variables
+---
 
-### Server (`/server/.env`)
+## 🔑 Environment Configuration
+
+### Backend (`/server/.env`)
 
 | Variable | Description |
-|----------|-------------|
-| `PORT` | Server port (default: 3001) |
-| `DATABASE_URL` | SQLite database path |
-| `JWT_SECRET` | Secret for JWT tokens |
-| `JWT_EXPIRES_IN` | Token expiration (e.g., 7d) |
-| `GEMINI_API_KEY` | Your Gemini API key |
+| :--- | :--- |
+| `PORT` | Server port (default: `3001`) |
+| `DATABASE_URL` | Local SQLite or Supabase Postgres URI |
+| `JWT_SECRET` | Secret token for JWT encryption |
+| `GEMINI_API_KEY` | Google AI Studio Developer Key |
+
+For hosting this application on Render and Vercel, check the step-by-step [DEPLOY.md](DEPLOY.md) file.
