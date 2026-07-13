@@ -50,30 +50,26 @@ It's designed to reduce decision anxiety and democratize scenario planning, show
 
 <table align="center">
   <tr>
-    <td align="center"><img src="https://github.com/user-attachments/assets/3cfddcec-4d88-4d06-929e-8d5b27688109" width="280" /><br /><sub>01. Dashboard</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/f0c6c8fa-7357-41e7-9905-c260feeaae4e" width="280" /><br /><sub>02. Add Decision</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/fb262fe0-e522-4e16-9b44-db37e0d98754" width="280" /><br /><sub>03. Simulating</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/0cd4854c-4bd5-4a91-b549-00f7549f432c" width="280" /><br /><sub>01. Landing Page</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/f472dbd4-e74c-4490-83ea-659db1f07863" width="280" /><br /><sub>02. Features</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/ee71924b-18fa-4b71-b7c5-d9ee04129924" width="280" /><br /><sub>03. Sign in</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="https://github.com/user-attachments/assets/651b1856-6917-46e6-88d7-be717eddc891" width="280" /><br /><sub>04. Timelines Overview</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/b0bc022e-861c-4b0c-b1f9-92d5e206f3b7" width="280" /><br /><sub>05. Side-by-Side Comparison</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/2f239571-bd2d-4062-88f5-f9ed417b3d3d" width="280" /><br /><sub>06. Timeline Details</sub></td>    
+    <td align="center"><img src="https://github.com/user-attachments/assets/52b59e34-11d4-461a-95c7-a03d2a16d1fb" width="280" /><br /><sub>04. Alias (if guest)</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/d5464588-9f8f-426d-8351-d7db7c13c435" width="280" /><br /><sub>05. Dashboard/Home page</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/f0c751f1-5746-4eef-88f2-cb5b0b3a07ac" width="280" /><br /><sub>06. Prompt Area</sub></td>    
   </tr>
   <tr>
-    <td align="center"><img src="https://github.com/user-attachments/assets/0da9ebec-4457-49a9-9a2f-e658c15b550e" width="280" /><br /><sub>07. Interactive Graph</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/c09765a4-560d-4406-8900-21e07a4a9cd8" width="280" /><br /><sub>08. Follow-up Branching</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/b3c1117e-5b74-4902-a3d6-619bf2df7df2" width="280" /><br /><sub>09. Profile Settings</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/3659bc36-b7b9-4575-ba97-03d1ce3bd788" width="280" /><br /><sub>07. Interactive Graph</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/36ddb49a-be22-4a5d-bc48-fc7b0946ccdd" width="280" /><br /><sub>08. Side-by-Side Comparison</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/60101dc6-a833-4b41-a80f-9e9af0d2180a" width="280" /><br /><sub>09.  Follow-up Branching</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="https://github.com/user-attachments/assets/511b3fef-afd9-4638-9d39-0c147a524bc0" width="280" /><br /><sub>10. Auth Screen</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/e8dce624-9fda-4ce0-94fe-26e339334d5d" width="280" /><br /><sub>11. Sound & Settings</sub></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/dba319ff-04d3-4026-841c-45460f72416a" width="280" /><br /><sub>12. History</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/7141ddf2-75e6-4726-99da-2e261b52afbf" width="280" /><br /><sub>10. New Child Timeline</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/2e318ba2-7440-47cb-b1a3-0a98a690b13a" width="280" /><br /><sub>11. Final Timeline visualisation</sub></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/253ead90-9279-4991-a011-e19121cd3c0e" width="280" /><br /><sub>12. Model selection</sub></td>
   </tr>
 </table>
-
-
-(will be adding it soon,i am just procrastinating , pls wait)
----
 
 ## 🛠️ Tech Stack
 
